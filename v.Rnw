@@ -1,0 +1,265 @@
+\documentclass{scrartcl}
+\usepackage[norsk]{babel}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{libertine}
+\newcommand{\figurtekst}[1]{\caption{Totalresultatet, alle
+    kommuneresultatene og beste kommune for #1}}
+\usepackage[noae]{Sweave}
+\AtBeginDocument{\def\today{\number\day.~\ifcase\month\or
+    januar\or februar\or mars\or april\or mai\or juni\or
+    juli\or august\or september\or oktober\or november\or desember%
+    \fi
+    \space\number\year}}
+\begin{document}
+
+\title{Valg 2009}
+\author{Håkon Malmedal}
+
+\maketitle
+
+<<echo=FALSE>>=
+source("partiplott.R")
+@ 
+
+\begin{figure}[htb]
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="A")
+@  
+  \figurtekst{Det norske Arbeiderparti}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="SV")
+@  
+  \figurtekst{Sosialistisk Venstreparti}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="RV")
+@  
+  \figurtekst{Rødt}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="SP")
+@  
+  \figurtekst{Senterpartiet}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="KRF")
+@  
+  \figurtekst{Kristelig Folkeparti}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="V")
+@  
+  \figurtekst{Venstre}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="H")
+@  
+  \figurtekst{Høyre}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="FRP")
+@  
+  \figurtekst{Fremskrittspartiet}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="DEM")
+@  
+  \figurtekst{Demokratene}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="DLF")
+@  
+  \figurtekst{Det Liberale Folkepartiet}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="KSP")
+@  
+  \figurtekst{Kristent Samlingsparti}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="KYST")
+@  
+  \figurtekst{Kystpartiet}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="MDG")
+@  
+  \figurtekst{Miljøpartiet De Grønne}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="NKP")
+@  
+  \figurtekst{Norges Kommunistiske Parti}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="PP")
+@  
+  \figurtekst{Pensjonistpartiet}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="SFP")
+@  
+  \figurtekst{Samfunnspartiet}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="TPF")
+@  
+  \figurtekst{Tverrpolitisk Folkevalgte}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="ABORT")
+@  
+  \figurtekst{Abortmotstanderne}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="ES")
+@  
+  \figurtekst{Ett (skrift)språk}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="NPAT")
+@  
+  \figurtekst{NorgesPatriotene}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="NRA")
+@  
+  \figurtekst{Norsk Republikansk Allianse}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="SALL")
+@  
+  \figurtekst{Sentrumsalliansen}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="SAMT")
+@  
+  \figurtekst{Samtidspartiet}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="VIGRID")
+@  
+  \figurtekst{Vigrid}
+\end{figure}
+
+\end{document}
