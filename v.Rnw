@@ -8,15 +8,11 @@
 \newcommand{\figurtekst}[1]{\caption{Totalresultatet, alle
     kommuneresultatene og beste kommune for #1}}
 \usepackage[noae]{Sweave}
-\AtBeginDocument{\def\today{\number\day.~\ifcase\month\or
-    januar\or februar\or mars\or april\or mai\or juni\or
-    juli\or august\or september\or oktober\or november\or desember%
-    \fi
-    \space\number\year}}
 \begin{document}
 
 \title{Valg 2009}
 \author{Håkon Malmedal}
+\date{}
 
 \maketitle
 
