@@ -5,7 +5,9 @@
 \usepackage[T1]{fontenc}
 \usepackage{microtype}
 \usepackage{libertine}
-\newcommand{\figurtekst}[1]{\caption{Totalresultatet, alle
+\newcommand{\figurtekstnorge}[1]{\caption{Totalresultatet, alle
+    kommuneresultatene og beste kommune for #1}}
+\newcommand{\figurtekstfylke}[1]{\caption{Fylkesresultatet, alle
     kommuneresultatene og beste kommune for #1}}
 \usepackage[noae]{Sweave}
 \begin{document}
@@ -20,12 +22,14 @@
 source("partiplott.R")
 @ 
 
+\section{Hele landet}
+
 \begin{figure}[htb]
   \centering
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="A")
 @  
-  \figurtekst{Det norske Arbeiderparti}
+  \figurtekstnorge{Det norske Arbeiderparti}
 \end{figure}
 
 \clearpage
@@ -35,7 +39,7 @@ partiplott(fork="A")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="SV")
 @  
-  \figurtekst{Sosialistisk Venstreparti}
+  \figurtekstnorge{Sosialistisk Venstreparti}
 \end{figure}
 
 \clearpage
@@ -45,7 +49,7 @@ partiplott(fork="SV")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="RV")
 @  
-  \figurtekst{Rødt}
+  \figurtekstnorge{Rødt}
 \end{figure}
 
 \clearpage
@@ -55,7 +59,7 @@ partiplott(fork="RV")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="SP")
 @  
-  \figurtekst{Senterpartiet}
+  \figurtekstnorge{Senterpartiet}
 \end{figure}
 
 \clearpage
@@ -65,7 +69,7 @@ partiplott(fork="SP")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="KRF")
 @  
-  \figurtekst{Kristelig Folkeparti}
+  \figurtekstnorge{Kristelig Folkeparti}
 \end{figure}
 
 \clearpage
@@ -75,7 +79,7 @@ partiplott(fork="KRF")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="V")
 @  
-  \figurtekst{Venstre}
+  \figurtekstnorge{Venstre}
 \end{figure}
 
 \clearpage
@@ -85,7 +89,7 @@ partiplott(fork="V")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="H")
 @  
-  \figurtekst{Høyre}
+  \figurtekstnorge{Høyre}
 \end{figure}
 
 \clearpage
@@ -95,7 +99,7 @@ partiplott(fork="H")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="FRP")
 @  
-  \figurtekst{Fremskrittspartiet}
+  \figurtekstnorge{Fremskrittspartiet}
 \end{figure}
 
 \clearpage
@@ -105,7 +109,7 @@ partiplott(fork="FRP")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="DEM")
 @  
-  \figurtekst{Demokratene}
+  \figurtekstnorge{Demokratene}
 \end{figure}
 
 \clearpage
@@ -115,7 +119,7 @@ partiplott(fork="DEM")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="DLF")
 @  
-  \figurtekst{Det Liberale Folkepartiet}
+  \figurtekstnorge{Det Liberale Folkepartiet}
 \end{figure}
 
 \clearpage
@@ -125,7 +129,7 @@ partiplott(fork="DLF")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="KSP")
 @  
-  \figurtekst{Kristent Samlingsparti}
+  \figurtekstnorge{Kristent Samlingsparti}
 \end{figure}
 
 \clearpage
@@ -135,7 +139,7 @@ partiplott(fork="KSP")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="KYST")
 @  
-  \figurtekst{Kystpartiet}
+  \figurtekstnorge{Kystpartiet}
 \end{figure}
 
 \clearpage
@@ -145,7 +149,7 @@ partiplott(fork="KYST")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="MDG")
 @  
-  \figurtekst{Miljøpartiet De Grønne}
+  \figurtekstnorge{Miljøpartiet De Grønne}
 \end{figure}
 
 \clearpage
@@ -155,7 +159,7 @@ partiplott(fork="MDG")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="NKP")
 @  
-  \figurtekst{Norges Kommunistiske Parti}
+  \figurtekstnorge{Norges Kommunistiske Parti}
 \end{figure}
 
 \clearpage
@@ -165,7 +169,7 @@ partiplott(fork="NKP")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="PP")
 @  
-  \figurtekst{Pensjonistpartiet}
+  \figurtekstnorge{Pensjonistpartiet}
 \end{figure}
 
 \clearpage
@@ -175,7 +179,7 @@ partiplott(fork="PP")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="SFP")
 @  
-  \figurtekst{Samfunnspartiet}
+  \figurtekstnorge{Samfunnspartiet}
 \end{figure}
 
 \clearpage
@@ -185,7 +189,7 @@ partiplott(fork="SFP")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="TPF")
 @  
-  \figurtekst{Tverrpolitisk Folkevalgte}
+  \figurtekstnorge{Tverrpolitisk Folkevalgte}
 \end{figure}
 
 \clearpage
@@ -195,7 +199,7 @@ partiplott(fork="TPF")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="ABORT")
 @  
-  \figurtekst{Abortmotstanderne}
+  \figurtekstnorge{Abortmotstanderne}
 \end{figure}
 
 \clearpage
@@ -205,7 +209,7 @@ partiplott(fork="ABORT")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="ES")
 @  
-  \figurtekst{Ett (skrift)språk}
+  \figurtekstnorge{Ett (skrift)språk}
 \end{figure}
 
 \clearpage
@@ -215,7 +219,7 @@ partiplott(fork="ES")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="NPAT")
 @  
-  \figurtekst{NorgesPatriotene}
+  \figurtekstnorge{NorgesPatriotene}
 \end{figure}
 
 \clearpage
@@ -225,7 +229,7 @@ partiplott(fork="NPAT")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="NRA")
 @  
-  \figurtekst{Norsk Republikansk Allianse}
+  \figurtekstnorge{Norsk Republikansk Allianse}
 \end{figure}
 
 \clearpage
@@ -235,7 +239,7 @@ partiplott(fork="NRA")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="SALL")
 @  
-  \figurtekst{Sentrumsalliansen}
+  \figurtekstnorge{Sentrumsalliansen}
 \end{figure}
 
 \clearpage
@@ -245,7 +249,7 @@ partiplott(fork="SALL")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="SAMT")
 @  
-  \figurtekst{Samtidspartiet}
+  \figurtekstnorge{Samtidspartiet}
 \end{figure}
 
 \clearpage
@@ -255,7 +259,149 @@ partiplott(fork="SAMT")
 <<fig=TRUE,echo=FALSE>>=
 partiplott(fork="VIGRID")
 @  
-  \figurtekst{Vigrid}
+  \figurtekstnorge{Vigrid}
+\end{figure}
+
+\clearpage
+
+\section{Østfold}
+
+\begin{figure}[htb]
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="A",fylke="Østfold")
+@  
+  \figurtekstfylke{Det norske Arbeiderparti}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="SV",fylke="Østfold")
+@  
+  \figurtekstfylke{Sosialistisk Venstreparti}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="RV",fylke="Østfold")
+@  
+  \figurtekstfylke{Rødt}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="SP",fylke="Østfold")
+@  
+  \figurtekstfylke{Senterpartiet}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="KRF",fylke="Østfold")
+@  
+  \figurtekstfylke{Kristelig Folkeparti}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="V",fylke="Østfold")
+@  
+  \figurtekstfylke{Venstre}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="H",fylke="Østfold")
+@  
+  \figurtekstfylke{Høyre}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="FRP",fylke="Østfold")
+@  
+  \figurtekstfylke{Fremskrittspartiet}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="DEM",fylke="Østfold")
+@  
+  \figurtekstfylke{Demokratene}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="KSP",fylke="Østfold")
+@  
+  \figurtekstfylke{Kristent Samlingsparti}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="KYST",fylke="Østfold")
+@  
+  \figurtekstfylke{Kystpartiet}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="MDG",fylke="Østfold")
+@  
+  \figurtekstfylke{Miljøpartiet De Grønne}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="PP",fylke="Østfold")
+@  
+  \figurtekstfylke{Pensjonistpartiet}
+\end{figure}
+
+\clearpage
+
+\begin{figure}
+  \centering
+<<fig=TRUE,echo=FALSE>>=
+partiplott(fork="ABORT",fylke="Østfold")
+@  
+  \figurtekstfylke{Abortmotstanderne}
 \end{figure}
 
 \end{document}
