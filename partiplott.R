@@ -54,14 +54,20 @@ Partiliste=data.frame(rbind(
   c("SAMT","Samtidspartiet"),
   c("VIGRID","Vigrid")))
 names(Partiliste) <- c("Parti","Partinavn")
-TotaltAntallStemmer <- sum(as.numeric(Valgresultat_2009_statistikk$GodkjenteStemmer))
+TotaltAntallStemmerLandet <- sum(as.numeric(Valgresultat_2009_statistikk$GodkjenteStemmer))
 library(ggplot2)
-partiplott <- function(fork="A")
+partiplott <- function(fork="A",fylke="alle")
   {
     navn <- as.character(subset(Partiliste,Parti==fork)$Partinavn)
     A <- subset(Valgresultat_2009_kommuner,Parti==fork)
     A <- A[order(A$KommuneID),]
+    if (fylke != "alle")
+      A <- subset(A,Fylkesnavn==fylke)
     a <- merge(A,Valgresultat_2009_statistikk,by="KommuneID")
+    if (fylke == "alle")
+      TotaltAntallStemmer = TotaltAntallStemmerLandet
+    else
+      TotaltAntallStemmer <- sum(as.numeric(a$GodkjenteStemmer))
     A$Prosent <- A$StemmerTotalt /
       a$GodkjenteStemmer*100
     TotaltAntallPartistemmer  <- sum(as.numeric(A$StemmerTotalt))
