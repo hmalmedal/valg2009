@@ -106,6 +106,5 @@ fylkesplott <- function(fylke,pdfut=FALSE)
 {
   fylkesparti <- as.vector(unique(subset(Valgresultat_2009_kommuner,
                                          Fylkesnavn==fylke)$Parti))
-  fylkesparti <- fylkesparti[1:length(fylkesparti)-1]
   as.null(lapply(fylkesparti,partiplott,fylke,pdfut))
 }
