@@ -28,7 +28,7 @@ Valgresultat_2009_statistikk <-
              "integer",
              "integer",
              "integer"))
-Partiliste=data.frame(rbind(
+Partiliste <- data.frame(rbind(
   c("A","Det norske Arbeiderparti"),
   c("SV","Sosialistisk Venstreparti"),
   c("RV","Rødt"),
@@ -54,6 +54,9 @@ Partiliste=data.frame(rbind(
   c("SAMT","Samtidspartiet"),
   c("VIGRID","Vigrid")))
 names(Partiliste) <- c("Parti","Partinavn")
+Fylkesliste <- data.frame(cbind(as.vector(unique(Valgresultat_2009_kommuner$Fylke)),
+            as.vector(unique(Valgresultat_2009_kommuner$Fylkesnavn))))
+names(Fylkesliste) <- c("Fylke","Fylkesnavn")
 TotaltAntallStemmerLandet <- sum(as.numeric(Valgresultat_2009_statistikk$GodkjenteStemmer))
 library(ggplot2)
 partiplott <- function(fork="A",fylke="Hele landet")
@@ -87,3 +90,10 @@ partiplott <- function(fork="A",fylke="Hele landet")
                                  texthere=A$Kommune[which.max(A$Prosent)]))
           )
   }
+fylkesplott <- function(fylke)
+{
+  fylkesparti <- as.vector(unique(subset(Valgresultat_2009_kommuner,
+                                         Fylkesnavn==fylke)$Parti))
+  fylkesparti <- fylkesparti[1:length(fylkesparti)-1]
+  as.null(lapply(fylkesparti,partiplott,fylke))
+}
