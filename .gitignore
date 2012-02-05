@@ -6,3 +6,5 @@
 *.aux
 *.log
 *.tex
+*.out
+!Valgresultat.tex
