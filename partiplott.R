@@ -104,7 +104,8 @@ partiplott <- function(fork="A",fylke="Hele landet",pdfut=FALSE)
   }
 fylkesplott <- function(fylke,pdfut=FALSE)
 {
-  fylkesparti <- as.vector(unique(subset(Valgresultat_2009_kommuner,
-                                         Fylkesnavn==fylke)$Parti))
+  fylkesparti <- intersect(Partiliste$Parti,
+                           subset(Valgresultat_2009_kommuner,
+                                  Fylkesnavn==fylke)$Parti)
   as.null(lapply(fylkesparti,partiplott,fylke,pdfut))
 }
