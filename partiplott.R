@@ -56,15 +56,15 @@ Partiliste=data.frame(rbind(
 names(Partiliste) <- c("Parti","Partinavn")
 TotaltAntallStemmerLandet <- sum(as.numeric(Valgresultat_2009_statistikk$GodkjenteStemmer))
 library(ggplot2)
-partiplott <- function(fork="A",fylke="alle")
+partiplott <- function(fork="A",fylke="Hele landet")
   {
     navn <- as.character(subset(Partiliste,Parti==fork)$Partinavn)
     A <- subset(Valgresultat_2009_kommuner,Parti==fork)
     A <- A[order(A$KommuneID),]
-    if (fylke != "alle")
+    if (fylke != "Hele landet")
       A <- subset(A,Fylkesnavn==fylke)
     a <- merge(A,Valgresultat_2009_statistikk,by="KommuneID")
-    if (fylke == "alle")
+    if (fylke == "Hele landet")
       TotaltAntallStemmer = TotaltAntallStemmerLandet
     else
       TotaltAntallStemmer <- sum(as.numeric(a$GodkjenteStemmer))
@@ -80,7 +80,7 @@ partiplott <- function(fork="A",fylke="alle")
                        )
           + scale_x_continuous('',limits=c(0,length(A$Prosent)))
           + scale_y_continuous('Prosent',limits=c(0,max(A$Prosent)))
-          + opts(title = navn)
+          + opts(title = paste(navn,"\n",fylke))
           + geom_abline(intercept = Partiprosent,slope=0)
           + geom_text(aes(x2,y2,label = texthere,hjust=1.1,vjust=0.2),
                       data.frame(x2=length(A$Prosent), y2=max(A$Prosent),
