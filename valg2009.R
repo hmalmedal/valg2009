@@ -1,4 +1,3 @@
 source("partiplott.R")
-as.null(lapply(as.vector(Partiliste$Parti),partiplott))
-fylkesplott("Møre og Romsdal")
-as.null(lapply(as.vector(Fylkesliste$Fylkesnavn),fylkesplott))
+as.null(lapply(as.vector(Partiliste$Parti),partiplott,pdfut=TRUE))
+as.null(lapply(as.vector(Fylkesliste$Fylkesnavn),fylkesplott,pdfut=TRUE))

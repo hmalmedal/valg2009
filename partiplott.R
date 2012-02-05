@@ -59,7 +59,7 @@ Fylkesliste <- data.frame(cbind(as.vector(unique(Valgresultat_2009_kommuner$Fylk
 names(Fylkesliste) <- c("Fylke","Fylkesnavn")
 TotaltAntallStemmerLandet <- sum(as.numeric(Valgresultat_2009_statistikk$GodkjenteStemmer))
 library(ggplot2)
-partiplott <- function(fork="A",fylke="Hele landet")
+partiplott <- function(fork="A",fylke="Hele landet",pdfut=FALSE)
   {
     navn <- as.character(subset(Partiliste,Parti==fork)$Partinavn)
     A <- subset(Valgresultat_2009_kommuner,Parti==fork)
@@ -68,13 +68,23 @@ partiplott <- function(fork="A",fylke="Hele landet")
       A <- subset(A,Fylkesnavn==fylke)
     a <- merge(A,Valgresultat_2009_statistikk,by="KommuneID")
     if (fylke == "Hele landet")
-      TotaltAntallStemmer = TotaltAntallStemmerLandet
+      {
+        TotaltAntallStemmer <- TotaltAntallStemmerLandet
+        pdffil <- paste("00",fork,".pdf",sep="")
+      }
     else
-      TotaltAntallStemmer <- sum(as.numeric(a$GodkjenteStemmer))
+      {
+        TotaltAntallStemmer <- sum(as.numeric(a$GodkjenteStemmer))
+        pdffil <- paste(as.character(subset(Fylkesliste,
+                                            Fylkesnavn==fylke)$Fylke),
+                        fork,".pdf",sep="")
+      }
     A$Prosent <- A$StemmerTotalt /
       a$GodkjenteStemmer*100
     TotaltAntallPartistemmer  <- sum(as.numeric(A$StemmerTotalt))
     Partiprosent <- TotaltAntallPartistemmer/TotaltAntallStemmer*100
+    if (pdfut)
+      pdf(file = pdffil)
     print(ggplot(data = A)
           + geom_point(aes(
                            y=sort(Prosent),
@@ -89,11 +99,13 @@ partiplott <- function(fork="A",fylke="Hele landet")
                       data.frame(x2=length(A$Prosent), y2=max(A$Prosent),
                                  texthere=A$Kommune[which.max(A$Prosent)]))
           )
+    if (pdfut)
+      dev.off()
   }
-fylkesplott <- function(fylke)
+fylkesplott <- function(fylke,pdfut=FALSE)
 {
   fylkesparti <- as.vector(unique(subset(Valgresultat_2009_kommuner,
                                          Fylkesnavn==fylke)$Parti))
   fylkesparti <- fylkesparti[1:length(fylkesparti)-1]
-  as.null(lapply(fylkesparti,partiplott,fylke))
+  as.null(lapply(fylkesparti,partiplott,fylke,pdfut))
 }
