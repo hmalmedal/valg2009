@@ -41,7 +41,7 @@ names(Fylkesliste) <- c("Fylke", "Fylkesnavn")
 TotaltAntallStemmerLandet <-
   sum(as.numeric(Valgresultat_2009_statistikk$GodkjenteStemmer))
 library(ggplot2)
-partiplott <- function(fork = "A", fylke = "Hele landet", pdfut = FALSE) {
+partiplott <- function(fork = "A", fylke = "Hele landet") {
   navn <- as.character(subset(Partiliste, Parti == fork)$Partinavn)
   A <- subset(Valgresultat_2009_kommuner, Parti == fork)
   A <- A[order(A$KommuneID), ]
@@ -50,18 +50,12 @@ partiplott <- function(fork = "A", fylke = "Hele landet", pdfut = FALSE) {
   a <- merge(A, Valgresultat_2009_statistikk, by = "KommuneID")
   if (fylke == "Hele landet") {
     TotaltAntallStemmer <- TotaltAntallStemmerLandet
-    pdffil <- paste("00", fork, ".pdf", sep = "")
   } else {
     TotaltAntallStemmer <- sum(as.numeric(a$GodkjenteStemmer))
-    pdffil <- paste(as.character(subset(Fylkesliste,
-                                        Fylkesnavn == fylke)$Fylke),
-                    fork, ".pdf", sep = "")
   }
   A$Prosent <- A$StemmerTotalt / a$GodkjenteStemmer*100
   TotaltAntallPartistemmer <- sum(as.numeric(A$StemmerTotalt))
   Partiprosent <- TotaltAntallPartistemmer/TotaltAntallStemmer*100
-  if (pdfut)
-    pdf(file = pdffil)
   print(ggplot(data = A)
         + geom_point(aes(
                          y = sort(Prosent),
@@ -73,12 +67,10 @@ partiplott <- function(fork = "A", fylke = "Hele landet", pdfut = FALSE) {
         + geom_text(aes(x2, y2, label = texthere, hjust = 1.1, vjust = 0.2),
                     data.frame(x2 = length(A$Prosent),  y2 = max(A$Prosent),
                                texthere = A$Kommune[which.max(A$Prosent)])))
-  if (pdfut)
-    dev.off()
 }
-fylkesplott <- function(fylke, pdfut = FALSE) {
+fylkesplott <- function(fylke) {
   fylkesparti <- intersect(Partiliste$Parti,
                            subset(Valgresultat_2009_kommuner,
                                   Fylkesnavn == fylke)$Parti)
-  as.null(lapply(fylkesparti, partiplott, fylke, pdfut))
+  as.null(lapply(fylkesparti, partiplott, fylke))
 }

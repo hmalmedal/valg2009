@@ -1,7 +1,5 @@
 source("partiplott.R")
-as.null(lapply(as.vector(Partiliste$Parti), partiplott, pdfut = TRUE))
-as.null(lapply(as.vector(Fylkesliste$Fylkesnavn), fylkesplott, pdfut = TRUE))
 pdf("resultater.pdf")
 as.null(lapply(as.vector(Partiliste$Parti), partiplott))
-as.null(lapply(as.vector(Fylkesliste$Fylkesnavn), fylkesplott))
+as.null(lapply(as.vector(Fylkesliste$Fylkesnavn[-3]), fylkesplott))
 dev.off()

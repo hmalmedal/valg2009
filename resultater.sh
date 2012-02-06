@@ -23,112 +23,112 @@ done
 
 echo \\section{Hedmark} >> resultater.tex
 
-for i in `seq 71 83`;
+for i in `seq 53 65`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
 
 echo \\section{Oppland} >> resultater.tex
 
-for i in `seq 84 96`;
+for i in `seq 66 78`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
 
 echo \\section{Buskerud} >> resultater.tex
 
-for i in `seq 97 110`;
+for i in `seq 79 92`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
 
 echo \\section{Vestfold} >> resultater.tex
 
-for i in `seq 111 124`;
+for i in `seq 93 106`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
 
 echo \\section{Telemark} >> resultater.tex
 
-for i in `seq 125 137`;
+for i in `seq 107 119`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
 
 echo \\section{Aust-Agder} >> resultater.tex
 
-for i in `seq 138 150`;
+for i in `seq 120 132`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
 
 echo \\section{Vest-Agder} >> resultater.tex
 
-for i in `seq 151 164`;
+for i in `seq 133 146`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
 
 echo \\section{Rogaland} >> resultater.tex
 
-for i in `seq 165 179`;
+for i in `seq 147 161`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
 
 echo \\section{Hordaland} >> resultater.tex
 
-for i in `seq 180 194`;
+for i in `seq 162 176`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
 
 echo \\section{Sogn og Fjordane} >> resultater.tex
 
-for i in `seq 195 205`;
+for i in `seq 177 187`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
 
 echo \\section{Møre og Romsdal} >> resultater.tex
 
-for i in `seq 206 217`;
+for i in `seq 188 199`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
 
 echo \\section{Sør-Trøndelag} >> resultater.tex
 
-for i in `seq 218 231`;
+for i in `seq 200 213`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
 
 echo \\section{Nord-Trøndelag} >> resultater.tex
 
-for i in `seq 232 243`;
+for i in `seq 214 225`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
 
 echo \\section{Nordland} >> resultater.tex
 
-for i in `seq 244 258`;
+for i in `seq 226 240`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
 
 echo \\section{Troms} >> resultater.tex
 
-for i in `seq 259 271`;
+for i in `seq 241 253`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
 
 echo \\section{Finnmark} >> resultater.tex
 
-for i in `seq 272 283`;
+for i in `seq 254 265`;
 do
     echo '\includegraphics[page='$i',width=0.5\textwidth]{resultater}' >> resultater.tex
 done
