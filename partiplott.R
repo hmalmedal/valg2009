@@ -68,9 +68,11 @@ partiplott <- function(fork = "A", fylke = "Hele landet") {
                     data.frame(x2 = length(A$Prosent),  y2 = max(A$Prosent),
                                texthere = A$Kommune[which.max(A$Prosent)])))
 }
+fylkesparti <- function(fylke) {
+  return(intersect(Partiliste$Parti, subset(Valgresultat_2009_kommuner,
+                                            Fylkesnavn == fylke)$Parti))
+}
 fylkesplott <- function(fylke) {
-  fylkesparti <- intersect(Partiliste$Parti,
-                           subset(Valgresultat_2009_kommuner,
-                                  Fylkesnavn == fylke)$Parti)
-  invisible(lapply(fylkesparti, partiplott, fylke))
+  f <- fylkesparti(fylke)
+  invisible(lapply(f, partiplott, fylke))
 }
