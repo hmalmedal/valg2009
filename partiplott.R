@@ -72,5 +72,5 @@ fylkesplott <- function(fylke) {
   fylkesparti <- intersect(Partiliste$Parti,
                            subset(Valgresultat_2009_kommuner,
                                   Fylkesnavn == fylke)$Parti)
-  as.null(lapply(fylkesparti, partiplott, fylke))
+  invisible(lapply(fylkesparti, partiplott, fylke))
 }

@@ -1,5 +1,5 @@
 source("partiplott.R")
 pdf("resultater.pdf")
-as.null(lapply(as.vector(Partiliste$Parti), partiplott))
-as.null(lapply(as.vector(Fylkesliste$Fylkesnavn[-3]), fylkesplott))
+invisible(lapply(as.vector(Partiliste$Parti), partiplott))
+invisible(lapply(as.vector(Fylkesliste$Fylkesnavn[-3]), fylkesplott))
 dev.off()
