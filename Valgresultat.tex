@@ -7,7 +7,8 @@
 \usepackage{graphicx}
 \newlength{\bredde}
 \setlength{\bredde}{0.5\textwidth}
-\newcommand{\res}[1]{\includegraphics[page=#1,width=\bredde]{resultater}}
+\newcommand{\res}[1]{\includegraphics[page=#1,%
+  width=\bredde]{resultater}\hskip0pt}
 \setcounter{secnumdepth}{-1} 
 \usepackage{hyperref}
 \hypersetup{
