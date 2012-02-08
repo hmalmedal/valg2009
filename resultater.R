@@ -5,8 +5,6 @@ sidelinje <- function(i) {
 kapittellinje <- function(fylke) {
   return(paste("\\section{", fylke, "}", sep = ""))
 }
-resultatlinjer <- c(kapittellinje("Hele landet"),
-                    sapply(1:length(Partiliste$Partinavn), sidelinje))
 fylkespartiantall <- function(fylke) {
   return(length(fylkesparti(fylke)))
 }
@@ -21,9 +19,14 @@ fylkeslinjer <- function(fylke) {
                           length.out = fylkespartiantall(fylke)),
                   sidelinje)))
 }
-for (fylke in Fylkesliste$Fylkesnavn[-3]) {
-  resultatlinjer <- append(resultatlinjer, fylkeslinjer(fylke))
+skrivresultatlinjerfil <- function() {
+  resultatlinjer <- c(kapittellinje("Hele landet"),
+                      sapply(1:length(Partiliste$Partinavn), sidelinje))
+  for (fylke in Fylkesliste$Fylkesnavn[-3]) {
+    resultatlinjer <- append(resultatlinjer, fylkeslinjer(fylke))
+  }
+  fileConn<-file("resultater.tex")
+  writeLines(resultatlinjer, fileConn)
+  close(fileConn)
 }
-fileConn<-file("resultater.tex")
-writeLines(resultatlinjer, fileConn)
-close(fileConn)
+skrivresultatlinjerfil()
