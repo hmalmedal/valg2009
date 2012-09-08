@@ -8,3 +8,4 @@
 *.tex
 *.out
 !Valgresultat.tex
+*.synctex.gz
