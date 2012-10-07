@@ -11,7 +11,7 @@ invisible(lapply(as.vector(Partiliste$Parti), partiplott))
 
 ```{r fylkesvis,echo=FALSE,results='asis'}
 fylkesplott.rmd <- function(fylke) {
-  cat(paste("<h2>", fylke, "</h2>"))
+  cat("<h2>", fylke, "</h2>")
   fylkesplott(fylke)
 }
 invisible(lapply(as.vector(Fylkesliste$Fylkesnavn[-3]),
