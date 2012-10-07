@@ -9,3 +9,7 @@
 *.out
 !Valgresultat.tex
 *.synctex.gz
+*.md
+NA
+figure
+*.html
