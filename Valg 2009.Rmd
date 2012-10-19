@@ -10,10 +10,58 @@ invisible(lapply(as.vector(Partiliste$Parti), partiplott))
 ```
 
 ```{r fylkesvis,echo=FALSE,results='asis'}
-fylkesplott.rmd <- function(fylke) {
-  cat("<h2>", fylke, "</h2>")
-  fylkesplott(fylke)
-}
-invisible(lapply(as.vector(Fylkesliste$Fylkesnavn[-3]),
-                 fylkesplott.rmd))
+fylke <- "Østfold"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Akershus"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Hedmark"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Oppland"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Buskerud"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Vestfold"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Telemark"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Aust-Agder"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Vest-Agder"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Rogaland"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Hordaland"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Sogn og Fjordane"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Møre og Romsdal"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Sør-Trøndelag"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Nord-Trøndelag"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Nordland"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Troms"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
+fylke <- "Finnmark"
+cat("<h2>", fylke, "</h2>")
+fylkesplott(fylke)
 ```
