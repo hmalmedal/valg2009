@@ -11,57 +11,57 @@ invisible(lapply(as.vector(Partiliste$Parti), partiplott))
 
 ```{r fylkesvis,echo=FALSE,results='asis'}
 fylke <- "Østfold"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Akershus"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Hedmark"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Oppland"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Buskerud"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Vestfold"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Telemark"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Aust-Agder"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Vest-Agder"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Rogaland"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Hordaland"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Sogn og Fjordane"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Møre og Romsdal"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Sør-Trøndelag"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Nord-Trøndelag"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Nordland"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Troms"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 fylke <- "Finnmark"
-cat("<h2>", fylke, "</h2>")
+cat("\n##", fylke, "\n")
 fylkesplott(fylke)
 ```
