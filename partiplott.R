@@ -56,17 +56,17 @@ partiplott <- function(fork = "A", fylke = "Hele landet") {
   A$Prosent <- A$StemmerTotalt / a$GodkjenteStemmer*100
   TotaltAntallPartistemmer <- sum(as.numeric(A$StemmerTotalt))
   Partiprosent <- TotaltAntallPartistemmer/TotaltAntallStemmer*100
-  print(ggplot(data = A)
-        + geom_point(aes(
-                         y = sort(Prosent),
-                         x = 1:length(Prosent)))
-        + scale_x_continuous('', limits = c(0, length(A$Prosent)))
-        + scale_y_continuous('Prosent', limits = c(0, max(A$Prosent)))
-        + ggtitle(paste(navn, "\n", fylke))
-        + geom_abline(intercept = Partiprosent, slope = 0)
-        + geom_text(aes(x2, y2, label = texthere, hjust = 1.1, vjust = 0.2),
-                    data.frame(x2 = length(A$Prosent), y2 = max(A$Prosent),
-                               texthere = A$Kommune[which.max(A$Prosent)])))
+  p <- ggplot(data = A)
+  p <- p + geom_point(aes(y = sort(Prosent),
+                          x = 1:length(Prosent)))
+  p <- p + scale_x_continuous('', limits = c(0, length(A$Prosent)))
+  p <- p + scale_y_continuous('Prosent', limits = c(0, max(A$Prosent)))
+  p <- p + ggtitle(paste(navn, "\n", fylke))
+  p <- p + geom_abline(intercept = Partiprosent, slope = 0)
+  p <- p + geom_text(aes(x2, y2, label = texthere, hjust = 1.1, vjust = 0.2),
+                     data.frame(x2 = length(A$Prosent), y2 = max(A$Prosent),
+                                texthere = A$Kommune[which.max(A$Prosent)]))
+  print(p)
 }
 fylkesparti <- function(fylke) {
   return(intersect(Partiliste$Parti, subset(Valgresultat_2009_kommuner,
