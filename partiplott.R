@@ -1,11 +1,11 @@
 Valgresultat_2009_kommuner <-
   read.csv("Valgresultat_2009_kommuner.csv",
-           sep = ";", dec = ",",
+           sep = ",", dec = ".",
            colClasses = c("factor", "factor", "factor", "factor",
              "factor", "integer", "integer", "numeric", "integer",
              "numeric", "integer", "numeric"))
 Valgresultat_2009_statistikk <-
-  read.csv("Valgresultat_2009_statistikk.csv", sep = ";", dec = ",",
+  read.csv("Valgresultat_2009_statistikk.csv", sep = ",", dec = ".",
            colClasses = c("factor", "factor", "factor", "integer",
              "integer", "integer", "integer", "integer"))
 Partiliste <-
