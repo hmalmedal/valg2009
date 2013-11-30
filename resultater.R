@@ -1,9 +1,9 @@
 source("partiplott.R")
 sidelinje <- function(i) {
-  return(paste("\\res{", i, "}", sep = ""))
+  return(paste0("\\res{", i, "}"))
 }
 kapittellinje <- function(fylke) {
-  return(paste("\\section{", fylke, "}", sep = ""))
+  return(paste0("\\section{", fylke, "}"))
 }
 fylkespartiantall <- function(fylke) {
   return(length(fylkesparti(fylke)))
