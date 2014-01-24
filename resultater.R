@@ -25,7 +25,7 @@ skrivresultatlinjerfil <- function() {
   for (fylke in Fylkesliste$Fylkesnavn[-3]) {
     resultatlinjer <- append(resultatlinjer, fylkeslinjer(fylke))
   }
-  fileConn<-file("resultater.tex")
+  fileConn <- file("resultater.tex")
   writeLines(resultatlinjer, fileConn)
   close(fileConn)
 }
