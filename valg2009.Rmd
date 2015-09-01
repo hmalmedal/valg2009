@@ -4,9 +4,9 @@ Valg 2009
 Hele landet
 -----------
 
-```{r helelandet, echo = FALSE}
+```{r helelandet, echo = FALSE, message = FALSE}
 source("partiplott.R")
-invisible(lapply(as.vector(Partiliste$Parti), partiplott))
+invisible(lapply(partier$Parti, partiplott))
 ```
 
 ```{r fylkesvis, echo = FALSE, results = "asis"}
@@ -14,6 +14,5 @@ fylkesplott.rmd <- function(fylke) {
   cat("\n##", fylke, "\n")
   fylkesplott(fylke)
 }
-invisible(lapply(as.vector(Fylkesliste$Fylkesnavn[-3]),
-                 fylkesplott.rmd))
+invisible(lapply(fylker18, fylkesplott.rmd))
 ```

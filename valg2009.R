@@ -1,5 +1,5 @@
 source("partiplott.R")
 pdf("resultater.pdf", height = 0.87 * 7)
-invisible(lapply(as.vector(Partiliste$Parti), partiplott))
-invisible(lapply(as.vector(Fylkesliste$Fylkesnavn[-3]), fylkesplott))
+invisible(lapply(partier$Parti, partiplott))
+invisible(lapply(fylker18, fylkesplott))
 dev.off()

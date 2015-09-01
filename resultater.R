@@ -8,12 +8,12 @@ kapittellinje <- function(fylke) {
 fylkespartiantall <- function(fylke) {
   return(length(fylkesparti(fylke)))
 }
-fylkesstartnummer <- cumsum(c(length(Partiliste$Partinavn),
-                              sapply(Fylkesliste$Fylkesnavn[-3],
+fylkesstartnummer <- cumsum(c(length(partier$Parti),
+                              sapply(fylker18,
                                      fylkespartiantall))) + 1
 length(fylkesstartnummer) <- length(fylkesstartnummer) - 1
 fylkeslinjer <- function(fylke) {
-  startnummer <- fylkesstartnummer[match(fylke, Fylkesliste$Fylkesnavn[-3])]
+  startnummer <- fylkesstartnummer[match(fylke, fylker18)]
   return(c(kapittellinje(fylke),
            sapply(seq.int(from = startnummer,
                           length.out = fylkespartiantall(fylke)),
@@ -21,8 +21,8 @@ fylkeslinjer <- function(fylke) {
 }
 skrivresultatlinjerfil <- function() {
   resultatlinjer <- c(kapittellinje("Hele landet"),
-                      sapply(1:length(Partiliste$Partinavn), sidelinje))
-  for (fylke in Fylkesliste$Fylkesnavn[-3]) {
+                      sapply(1:length(partier$Parti), sidelinje))
+  for (fylke in fylker18) {
     resultatlinjer <- append(resultatlinjer, fylkeslinjer(fylke))
   }
   fileConn <- file("resultater.tex")

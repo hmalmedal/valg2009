@@ -2,14 +2,10 @@
 .Rhistory
 .RData
 *.pdf
-*.eps
 *.aux
 *.log
 *.tex
 *.out
 !Valgresultat.tex
 *.synctex.gz
-*.md
-NA
-figure
 *.html
