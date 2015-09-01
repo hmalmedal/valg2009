@@ -56,11 +56,9 @@ partiplott <- function(fork = "A", fylke = "Hele landet") {
   A$Prosent <- A$StemmerTotalt / a$GodkjenteStemmer*100
   TotaltAntallPartistemmer <- sum(as.numeric(A$StemmerTotalt))
   Partiprosent <- TotaltAntallPartistemmer/TotaltAntallStemmer*100
-  p <- ggplot(data = A)
+  p <- ggplot(data = A, aes(xmin = 0, ymin = 0))
   p <- p + geom_point(aes(y = sort(Prosent),
                           x = 1:length(Prosent)))
-  p <- p + scale_x_continuous(limits = c(0, length(A$Prosent)))
-  p <- p + scale_y_continuous(limits = c(0, max(A$Prosent)))
   p <- p + labs(title = paste0(navn, "\n", fylke),
                 x = NULL,
                 y = "Prosent")
