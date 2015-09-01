@@ -59,7 +59,7 @@ partiplott <- function(fork = "A", fylke = "Hele landet") {
   p <- ggplot(data = A, aes(xmin = 0, ymin = 0))
   p <- p + geom_point(aes(y = sort(Prosent),
                           x = 1:length(Prosent)))
-  p <- p + labs(title = paste0(navn, "\n", fylke),
+  p <- p + labs(title = paste(navn, fylke, sep = "\n"),
                 x = NULL,
                 y = "Prosent")
   p <- p + geom_abline(intercept = Partiprosent, slope = 0)
