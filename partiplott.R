@@ -16,9 +16,9 @@ partiplott <- function(parti, fylke = "Hele landet") {
                 x = NULL,
                 y = "Prosent")
   p <- p + geom_abline(intercept = Partiprosent, slope = 0)
-  p <- p + geom_text(aes(x2, y2, label = texthere, hjust = 1.1, vjust = 0.2),
-                     data.frame(x2 = length(A$Prosent), y2 = max(A$Prosent),
-                                texthere = A$Kommune[which.max(A$Prosent)]))
+  p <- p + geom_text(aes(x, y, label = label, hjust = 1.1, vjust = 0.2),
+                     data.frame(x = length(A$Prosent), y = max(A$Prosent),
+                                label = A$Kommune[which.max(A$Prosent)]))
   print(p)
 }
 fylkesparti <- function(fylke) {
