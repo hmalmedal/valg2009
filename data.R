@@ -1,6 +1,6 @@
 library(dplyr)
 library(readr)
-partier <- read_csv("partier.csv")
+partier <- read_csv("partier.csv", col_types = "cc")
 kommuneresultater <- read_csv("Valgresultat_2009_kommuner.csv",
                               col_names = c("Fylke", "Kommune", "Parti",
                                             "Stemmer"),
