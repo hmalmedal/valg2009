@@ -9,7 +9,7 @@ partiplott <- function(parti, fylke = "Hele landet") {
     Partiprosent <- filter(fylkesresultater, Fylke == fylke,
                            Parti == parti)$Prosent
   }
-  p <- ggplot(data = A, aes(xmin = 0, ymin = 0))
+  p <- ggplot(data = A)
   p <- p + geom_point(aes(y = sort(Prosent),
                           x = seq_along(Prosent)))
   p <- p + labs(title = paste(parti, fylke, sep = "\n"),
@@ -19,6 +19,7 @@ partiplott <- function(parti, fylke = "Hele landet") {
   p <- p + geom_text(aes(x, y, label = label, hjust = 1.1, vjust = 0.2),
                      data.frame(x = length(A$Prosent), y = max(A$Prosent),
                                 label = A$Kommune[which.max(A$Prosent)]))
+  p <- p + expand_limits(x = 0, y = 0)
   print(p)
 }
 fylkesparti <- function(fylke) {
