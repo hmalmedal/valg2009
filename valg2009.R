@@ -1,5 +1,0 @@
-source("partiplott.R")
-pdf("resultater.pdf", height = 0.87 * 7)
-invisible(lapply(partier$Parti, partiplott))
-invisible(lapply(fylker18, fylkesplott))
-dev.off()

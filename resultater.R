@@ -1,32 +1,38 @@
-source("partiplott.R")
-sidelinje <- function(i) {
-  return(paste0("\\res{", i, "}"))
-}
-kapittellinje <- function(fylke) {
-  return(paste0("\\section{", fylke, "}"))
-}
-fylkespartiantall <- function(fylke) {
-  return(length(fylkesparti(fylke)))
-}
-fylkesstartnummer <- cumsum(c(length(partier$Parti),
-                              sapply(fylker18,
-                                     fylkespartiantall))) + 1
-length(fylkesstartnummer) <- length(fylkesstartnummer) - 1
-fylkeslinjer <- function(fylke) {
-  startnummer <- fylkesstartnummer[match(fylke, fylker18)]
-  return(c(kapittellinje(fylke),
-           sapply(seq.int(from = startnummer,
-                          length.out = fylkespartiantall(fylke)),
-                  sidelinje)))
-}
-skrivresultatlinjerfil <- function() {
-  resultatlinjer <- c(kapittellinje("Hele landet"),
-                      sapply(1:length(partier$Parti), sidelinje))
-  for (fylke in fylker18) {
-    resultatlinjer <- append(resultatlinjer, fylkeslinjer(fylke))
-  }
-  fileConn <- file("resultater.tex")
-  writeLines(resultatlinjer, fileConn)
-  close(fileConn)
-}
-skrivresultatlinjerfil()
+import::from(magrittr, "%$%")
+source("data.R")
+library(dplyr)
+library(forcats)
+library(ggplot2)
+library(stringr)
+p <- kommuneresultater %>%
+  bind_rows(mutate(., Fylke = "Hele landet"), .) %>%
+  filter(Fylke != "03 Oslo") %>%
+  mutate(Fylke = fct_inorder(Fylke)) %>%
+  group_by(Fylke) %>%
+  mutate(Fylkesstemmer = sum(Stemmer)) %>%
+  do(group_by(., Parti) %>%
+       arrange(Prosent) %>%
+       mutate(x = seq_along(Prosent)) %>%
+       mutate(Fylkesprosent = sum(Stemmer) / Fylkesstemmer * 100) %>%
+       do(p = ggplot(., aes(x = x, y = Prosent)) +
+            geom_point() +
+            geom_abline(slope = 0, intercept = .$Fylkesprosent[1]) +
+            geom_text(aes(label = Kommune, hjust = 1.1, vjust = 0.2),
+                      top_n(., 1, Prosent)) +
+            labs(title = str_c(.$Parti[1], .$Fylke[1], sep = "\n"),
+                 x = NULL, y = "Prosent") +
+            expand_limits(x = 0, y = 0)
+       )
+  ) %>%
+  ungroup()
+
+p %>%
+  mutate(i = seq_along(Fylke)) %>%
+  group_by(Fylke) %>%
+  summarise(s = str_c("\\section{", first(Fylke), "}\n",
+                      str_c("\\res{", i, "}", collapse = "\n"))) %$%
+  cat(s, file = "resultater.tex", sep = "\n")
+
+pdf("resultater.pdf", height = 0.87 * 7)
+purrr::walk(p$p, print)
+dev.off()
