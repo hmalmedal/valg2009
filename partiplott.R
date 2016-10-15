@@ -29,4 +29,4 @@ fylkesplott <- function(fylke) {
   f <- fylkesparti(fylke)
   invisible(lapply(f, partiplott, fylke))
 }
-fylker18 <- levels(fylkesresultater$Fylke)[-3]
+fylker18 <- unique(fylkesresultater$Fylke)[-3]
