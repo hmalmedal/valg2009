@@ -6,7 +6,7 @@ library(ggplot2)
 library(stringr)
 p <- kommuneresultater %>%
   bind_rows(mutate(., Fylke = "Hele landet"), .) %>%
-  filter(Fylke != "03 Oslo") %>%
+  filter(Fylke != "Oslo") %>%
   mutate(Fylke = fct_inorder(Fylke)) %>%
   group_by(Fylke) %>%
   mutate(Fylkesstemmer = sum(Stemmer)) %>%

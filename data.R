@@ -1,14 +1,20 @@
 library(dplyr)
+library(forcats)
 library(readr)
 library(readxl)
 library(stringr)
+kommuneduplikater <- c("Bø", "Herøy", "Nes", "Os", "Sande", "Våler")
 partier <- read_csv("partier.csv", col_types = "cc")
 kommuneresultater <- read_excel("Valgresultat_2009.xls") %>%
-  mutate(Fylke = str_c(str_pad(Fylke, 2, pad = 0), Fylkenavn, sep = " "),
-         Kommune = str_c(KommuneID, Kommune, sep = " ") %>%
-           str_replace(" Og ", " og "),
-         Parti = factor(Parti, partier$Partiforkortelse, partier$Parti)) %>%
+  arrange(KommuneID) %>%
+  mutate(Parti = factor(Parti, partier$Partiforkortelse, partier$Parti)) %>%
   filter(!is.na(Parti)) %>%
+  mutate(Fylke = fct_inorder(Fylkenavn)) %>%
+  mutate(i = Kommune %in% kommuneduplikater,
+         Kommune = Kommune %>%
+           str_replace(" Og ", " og ") %>%
+           replace(i, str_c(.[i], " i ", Fylke[i])) %>%
+           fct_inorder()) %>%
   select(Fylke, Kommune, Parti, Stemmer = StemmerTotalt) %>%
   arrange(Fylke, Kommune, Parti) %>%
   group_by(Kommune) %>%
