@@ -9,11 +9,11 @@ p <- kommuneresultater %>%
   filter(Fylke != "Oslo") %>%
   mutate(Fylke = fct_inorder(Fylke)) %>%
   group_by(Fylke) %>%
-  mutate(Fylkesstemmer = sum(Stemmer)) %>%
+  mutate(Total = sum(Stemmer)) %>%
   group_by(Fylke, Parti) %>%
   arrange(Prosent) %>%
   mutate(x = seq_along(Prosent)) %>%
-  mutate(Fylkesprosent = sum(Stemmer) / Fylkesstemmer * 100) %>%
+  mutate(Fylkesprosent = sum(Stemmer) / Total * 100) %>%
   do(p = ggplot(., aes(x = x, y = Prosent)) +
        geom_point() +
        geom_abline(slope = 0, intercept = .$Fylkesprosent[1]) +
