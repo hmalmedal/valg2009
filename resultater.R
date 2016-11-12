@@ -19,7 +19,7 @@ p <- kommuneresultater %>%
        geom_abline(slope = 0, intercept = .$Fylkesprosent[1]) +
        geom_text(aes(label = Kommune, hjust = 1.1, vjust = 0.2),
                  top_n(., 1, Prosent)) +
-       labs(title = str_c(.$Parti[1], .$Fylke[1], sep = "\n"),
+       labs(title = .$Parti[1], subtitle = .$Fylke[1],
             x = NULL, y = "Prosent") +
        expand_limits(x = 0, y = 0)
   ) %>%
