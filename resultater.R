@@ -7,7 +7,7 @@ library(stringr)
 p <- kommuneresultater %>%
   bind_rows(mutate(., Fylke = "Hele landet"), .) %>%
   filter(Fylke != "Oslo") %>%
-  mutate(Fylke = fct_inorder(Fylke)) %>%
+  mutate(Fylke = as_factor(Fylke)) %>%
   group_by(Fylke) %>%
   mutate(Total = sum(Stemmer)) %>%
   group_by(Fylke, Parti) %>%

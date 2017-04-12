@@ -9,12 +9,12 @@ kommuneresultater <- read_excel("Valgresultat_2009.xls") %>%
   arrange(KommuneID) %>%
   mutate(Parti = factor(Parti, partier$Partiforkortelse, partier$Parti)) %>%
   filter(!is.na(Parti)) %>%
-  mutate(Fylke = fct_inorder(Fylkenavn)) %>%
+  mutate(Fylke = as_factor(Fylkenavn)) %>%
   mutate(i = Kommune %in% kommuneduplikater,
          Kommune = Kommune %>%
            str_replace(" Og ", " og ") %>%
            replace(i, str_c(.[i], " i ", Fylke[i])) %>%
-           fct_inorder()) %>%
+           as_factor()) %>%
   select(Fylke, Kommune, Parti, Stemmer = StemmerTotalt) %>%
   arrange(Fylke, Kommune, Parti) %>%
   group_by(Kommune) %>%
