@@ -1,9 +1,8 @@
-import::from(magrittr, "%$%")
+library(tidyverse)
+library(magrittr)
+
 source("data.R")
-library(dplyr)
-library(forcats)
-library(ggplot2)
-library(stringr)
+
 p <- kommuneresultater %>%
   bind_rows(mutate(., Fylke = "Hele landet"), .) %>%
   filter(Fylke != "Oslo") %>%
@@ -33,5 +32,5 @@ p %>%
   cat(s, file = "resultater.tex", sep = "\n")
 
 pdf("resultater.pdf", height = 0.87 * 7)
-purrr::walk(p$p, print)
+walk(p$p, print)
 dev.off()

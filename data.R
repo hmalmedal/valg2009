@@ -1,10 +1,7 @@
-library(dplyr)
-library(forcats)
-library(readr)
+library(tidyverse)
 library(readxl)
-library(stringr)
 kommuneduplikater <- c("Bø", "Herøy", "Nes", "Os", "Sande", "Våler")
-partier <- read_csv("partier.csv", col_types = "cc")
+partier <- read_csv("partier.csv")
 kommuneresultater <- read_excel("Valgresultat_2009.xls") %>%
   arrange(KommuneID) %>%
   mutate(Parti = factor(Parti, partier$Partiforkortelse, partier$Parti)) %>%
